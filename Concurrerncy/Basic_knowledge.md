@@ -146,17 +146,20 @@
 ​	用```Reentrant```类保护代码块的基本结构如下：
 
 ```java
-private var myLock = new ReetrantLock();
-myLock.lock(); // a Reetrant object
-try{
-    critical section
-}
-finally{
-    myLock.unlock(); // make sure the lock is unlocked even if an exception is thrown
+public class classname{
+    private var myLock = new ReetrantLock();//
+    
+    myLock.lock(); // a Reetrant object
+    try{
+        critical section
+    }
+    finally{
+        myLock.unlock(); // make sure the lock is unlocked even if an exception is thrown
+    }
 }
 ```
 
-
+1. 在一个 **类** 中用```Reentrant()```方法构造一把锁，在 **类的方法** 中使用这把锁
 
 
 
