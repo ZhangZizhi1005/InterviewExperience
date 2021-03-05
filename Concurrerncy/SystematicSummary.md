@@ -148,18 +148,19 @@
 ```java
 public class classname{
     private var myLock = new ReetrantLock();//
-    
-    myLock.lock(); // a Reetrant object
-    try{
-        critical section
-    }
-    finally{
-        myLock.unlock(); // make sure the lock is unlocked even if an exception is thrown
+    ...
+    public void methodName(){
+        myLock.lock(); // a Reetrant object
+        try{
+            //critical section
+   		}
+    	finally{
+       		myLock.unlock(); // make sure the lock is unlocked even if an exception is thrown
+    	}
     }
 }
 ```
 
-1. 在一个 **类** 中用```Reentrant()```方法构造一把锁，在 **类的方法** 中使用这把锁
-
-
-
+1. 在类中构造一个```ReentrantLock```类型的对象，即构造一把锁
+2. 在某段代码块前调用```锁.lock()```方法，在这段代码块的```finally``` 子句中调用```锁.unlock()```方法
+    - 在上锁到解锁中的代码块一定可以完整的持有一段CPU时间直到执行完毕
